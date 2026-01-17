@@ -1,7 +1,7 @@
-# Taprobane Tourism App - AI Coding Instructions
+# thaprobase Tourism App - AI Coding Instructions
 
 ## Project Overview
-Taprobane is a premium Sri Lanka tourism web application built with **React 18**, **Vite**, **Framer Motion**, and **React Router**. It features a sophisticated design system, smooth animations, and a modular component architecture designed for scalability.
+thaprobase is a premium Sri Lanka tourism web application built with **React 18**, **Vite**, **Framer Motion**, and **React Router**. It features a sophisticated design system, smooth animations, and a modular component architecture designed for scalability.
 
 ## Architecture & Data Flow
 

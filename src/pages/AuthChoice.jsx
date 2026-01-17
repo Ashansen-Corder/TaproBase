@@ -38,7 +38,7 @@ const AuthChoice = () => {
     >
       <div className="auth-choice-container">
         <motion.div className="auth-choice-header" variants={itemVariants}>
-          <h1>Welcome to Taprobane</h1>
+          <h1>Welcome to thaprobase</h1>
           <p>Choose how you want to explore Sri Lanka</p>
         </motion.div>
 
