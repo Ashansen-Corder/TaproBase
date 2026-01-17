@@ -1,4 +1,4 @@
-# 🌴 Taprobane - Premium Sri Lanka Tourism Web Application
+# 🌴 Taprobane - Sri Lanka Tourism Web Application
 
 A modern, sophisticated web application for exploring Sri Lanka with premium design, smooth animations, and comprehensive travel features.
 
