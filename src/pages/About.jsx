@@ -9,7 +9,7 @@ const About = () => {
       exit={{ opacity: 0 }}
       className="container section"
     >
-      <h1>About Taprobane</h1>
+      <h1>About thaprobase</h1>
       <p>Your trusted travel companion for Sri Lanka</p>
     </motion.div>
   );

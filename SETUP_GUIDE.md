@@ -1,4 +1,4 @@
-# 🚀 TAPROBANE PREMIUM - COMPLETE SETUP GUIDE
+# 🚀 thaprobase PREMIUM - COMPLETE SETUP GUIDE
 
 ## Step-by-Step Installation & Setup
 
@@ -22,17 +22,17 @@ git --version     # Should show git version
 ## 📥 STEP 1: Get the Code
 
 ### Option A: If you have a ZIP file
-1. Extract the `taprobane-premium` folder to your desired location
+1. Extract the `thaprobase-premium` folder to your desired location
 2. Open Terminal/Command Prompt
 3. Navigate to the folder:
 ```bash
-cd path/to/taprobane-premium
+cd path/to/thaprobase-premium
 ```
 
 ### Option B: If using Git
 ```bash
 git clone YOUR_REPOSITORY_URL
-cd taprobane-premium
+cd thaprobase-premium
 ```
 
 ---
@@ -74,7 +74,7 @@ VITE v5.0.8  ready in 500 ms
 
 **Open your browser and go to:** `http://localhost:3000`
 
-You should see the beautiful Taprobane home page! 🎉
+You should see the beautiful thaprobase home page! 🎉
 
 ---
 
@@ -83,7 +83,7 @@ You should see the beautiful Taprobane home page! 🎉
 ### Project Structure Overview
 
 ```
-taprobane-premium/
+thaprobase-premium/
 ├── src/
 │   ├── components/
 │   │   └── common/

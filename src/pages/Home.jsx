@@ -113,7 +113,7 @@ const Home = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
           >
-            From ancient temples to pristine beaches, let Taprobane be your guide
+            From ancient temples to pristine beaches, let thaprobase be your guide
             to unforgettable experiences in Sri Lanka's breathtaking landscapes.
           </motion.p>
 
@@ -221,7 +221,7 @@ const Home = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="section-title">Why Travelers Trust Taprobane</h2>
+              <h2 className="section-title">Why Travelers Trust thaprobase</h2>
               <p className="section-subtitle">
                 We're more than just a travel app—we're your trusted companion
                 for exploring Sri Lanka safely and authentically.
