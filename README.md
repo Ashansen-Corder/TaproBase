@@ -1,10 +1,29 @@
-# 🌴 thaprobase - Sri Lanka Tourism Web Application
+# 📚 Taprobane - Premium Sri Lanka Tourism Platform
 
-A modern, sophisticated web application for exploring Sri Lanka with premium design, smooth animations, and comprehensive travel features.
+**Complete Full-Stack Tourism Application | React + Node.js + MongoDB**
+
+A modern, sophisticated web application for exploring Sri Lanka with premium design, smooth animations, and comprehensive travel features. This is a full-stack application with separate frontend and backend.
+
+## 🎯 Quick Navigation
+
+| What Do You Want? | Start Here |
+|------------------|-----------|
+| 🚀 **New to project** | [Backend Setup Complete](BACKEND_SETUP_COMPLETE.md) |
+| 🏗️ **Set up backend** | [Backend Setup Guide](backend/BACKEND_SETUP.md) |
+| 🔗 **Connect frontend to backend** | [Integration Guide](FRONTEND_BACKEND_INTEGRATION.md) |
+| 📖 **Full API documentation** | [Backend Complete Guide](BACKEND_COMPLETE.md) |
+| 💻 **Frontend code** | See `src/` folder |
+| 🆘 **Having issues** | [Troubleshooting](BACKEND_SETUP_COMPLETE.md#troubleshooting) |
+
+## 📚 Complete Documentation Index
+
+See **[Documentation Index](DOCUMENTATION_INDEX.md)** for comprehensive guide to all documentation files.
+
+---
 
 ## ✨ Features
 
-### Implemented Features
+### ✅ Implemented Features
 - **Stunning Home Page** with smooth scroll animations and modern design
 - **Premium Navigation** with responsive mobile menu
 - **Interactive Map Integration** (ready for Leaflet implementation)
@@ -13,41 +32,62 @@ A modern, sophisticated web application for exploring Sri Lanka with premium des
 - **Responsive Design** that works perfectly on all devices
 - **Smooth Page Transitions** using Framer Motion
 - **Toast Notifications** for user feedback
+- **Complete Backend API** with 7 routes and 35+ endpoints
+- **JWT Authentication** for secure access
+- **MongoDB Database** with 6 data models
+- **Production-Ready** code and documentation
 
-### Design Highlights
+### 🎨 Design Highlights
 - **Premium Typography** using Playfair Display and Sora fonts
 - **Sophisticated Color Palette** inspired by Sri Lankan landscapes
 - **Micro-interactions** and hover effects throughout
 - **Glassmorphism** effects on key elements
 - **Smooth Animations** using Framer Motion
 - **Accessibility** focused design
+- **Dark/Light Theme** support
 
-## 🚀 Quick Start
+---
+
+## 🚀 Quick Start (5 Minutes)
 
 ### Prerequisites
-- Node.js (v18 or higher)
-- npm or yarn
+- Node.js v14+ and npm
+- MongoDB (local or MongoDB Atlas)
 - Git
 
-### Installation
-
-1. **Clone or Download** this project to your computer
-
-2. **Install dependencies:**
+### Step 1: Backend Setup
 ```bash
-cd thaprobase-premium
+cd backend
 npm install
+cp .env.example .env
+# Configure MONGODB_URI in .env
 ```
 
-3. **Start development server:**
+### Step 2: Start Backend
 ```bash
 npm run dev
+# Backend running on http://localhost:5000
 ```
 
-4. **Open your browser:**
-Navigate to `http://localhost:3000`
+### Step 3: Frontend (in another terminal)
+```bash
+cd ..
+npm install
+npm run dev
+# Frontend running on http://localhost:3000
+```
 
-## 📁 Project Structure
+### Step 4: Verify
+```bash
+curl http://localhost:5000/api/health
+# Should return: { "status": "OK", ... }
+```
+
+✅ **Both frontend and backend are running!**
+
+---
+
+## 📁 Complete Project Structure
 
 ```
 thaprobase-premium/
