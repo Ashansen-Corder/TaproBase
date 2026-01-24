@@ -48,21 +48,41 @@ app.get('/api/health', (req, res) => {
   });
 });
 
+// Request logging middleware
+app.use((req, res, next) => {
+  console.log(`[${new Date().toISOString()}] ${req.method} ${req.path}`);
+  next();
+});
+
 // Error handling middleware
 app.use((err, req, res, next) => {
-  console.error(err.stack);
+  console.error(`[ERROR] ${req.method} ${req.path}:`, err.message);
   res.status(err.status || 500).json({
     success: false,
     message: err.message || 'Internal Server Error',
+    path: req.path,
     ...(process.env.NODE_ENV === 'development' && { stack: err.stack })
   });
 });
 
 // 404 handler
 app.use((req, res) => {
+  console.warn(`[404] Route not found: ${req.method} ${req.path}`);
   res.status(404).json({
     success: false,
-    message: 'Route not found'
+    message: 'Route not found',
+    path: req.path,
+    method: req.method,
+    availableEndpoints: [
+      '/api/auth',
+      '/api/accommodations',
+      '/api/attractions',
+      '/api/guides',
+      '/api/bookings',
+      '/api/trips',
+      '/api/contact',
+      '/api/health'
+    ]
   });
 });
 
