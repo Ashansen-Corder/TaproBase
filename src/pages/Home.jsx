@@ -55,25 +55,25 @@ const Home = () => {
     {
       name: 'Sigiriya',
       category: 'Heritage',
-      image: '🏛️',
+      image: '/images/sigiriya.jpg',
       rating: 4.9
     },
     {
       name: 'Ella',
       category: 'Nature',
-      image: '🏔️',
+      image: '/images/ella.jpg',    // Fixed: Path instead of emoji
       rating: 4.8
     },
     {
       name: 'Galle',
       category: 'Historic',
-      image: '🏰',
+      image: '/images/galle.jpg',   // Fixed: Path instead of emoji
       rating: 4.7
     },
     {
       name: 'Unawatuna',
       category: 'Beach',
-      image: '🏖️',
+      image: '/images/unawatuna.jpg', // Fixed: Path instead of emoji
       rating: 4.8
     }
   ];
@@ -332,7 +332,22 @@ const DestinationCard = ({ destination, index }) => {
       transition={{ delay: index * 0.1, duration: 0.5 }}
       whileHover={{ y: -8 }}
     >
-      <div className="destination-image">{destination.image}</div>
+      {/* --- THIS IS THE KEY FIX BELOW --- */}
+      <div className="destination-image-container">
+         <img 
+            src={destination.image} 
+            alt={destination.name}
+            style={{ 
+              width: '100%', 
+              height: '200px', 
+              objectFit: 'cover',
+              borderTopLeftRadius: '12px',  // Optional: matches card rounded corners
+              borderTopRightRadius: '12px' 
+            }} 
+         />
+      </div>
+      {/* ---------------------------------- */}
+
       <div className="destination-info">
         <div className="destination-header">
           <h3 className="destination-name">{destination.name}</h3>
@@ -346,7 +361,6 @@ const DestinationCard = ({ destination, index }) => {
     </motion.div>
   );
 };
-
 // Benefit Item Component
 const BenefitItem = ({ icon: Icon, title, description }) => (
   <div className="benefit-item">
