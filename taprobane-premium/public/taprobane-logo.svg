@@ -1,0 +1,11 @@
+<svg viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Main text: Taprobse with 'b' in orange -->
+  <text x="50" y="100" font-family="Inter, Arial, sans-serif" font-size="72" font-weight="700" fill="#001f5e">
+    <tspan>Tapro</tspan><tspan fill="#ff8c42">b</tspan><tspan fill="#001f5e">ase</tspan>
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="50" y="140" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="400" fill="#999999">
+    Your Sri Lanka Guide
+  </text>
+</svg>

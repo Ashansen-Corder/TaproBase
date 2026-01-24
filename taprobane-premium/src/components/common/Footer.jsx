@@ -43,16 +43,16 @@ const Footer = () => {
             <div className="footer-brand">
               <Link to="/" className="footer-logo">
                 <span className="logo-icon">🌴</span>
-                <span className="logo-text">Taprobane</span>
+                <span className="logo-text">Thaprobase</span>
               </Link>
               <p className="footer-tagline">
                 Your complete travel companion for exploring the pearl of the Indian Ocean
               </p>
               
               <div className="footer-contact">
-                <a href="mailto:hello@taprobane.lk" className="contact-item">
+                <a href="mailto:hello@thaprobase.lk" className="contact-item">
                   <Mail size={18} />
-                  <span>hello@taprobane.lk</span>
+                  <span>hello@thaprobase.lk</span>
                 </a>
                 <a href="tel:+94112345678" className="contact-item">
                   <Phone size={18} />
@@ -109,7 +109,7 @@ const Footer = () => {
         <div className="container">
           <div className="footer-bottom-content">
             <p className="copyright">
-              © {currentYear} Taprobane. All rights reserved.
+              © {currentYear} thaprobase. All rights reserved.
             </p>
             
             <div className="social-links">
@@ -134,3 +134,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

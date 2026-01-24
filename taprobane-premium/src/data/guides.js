@@ -16,7 +16,7 @@ export const guides = [
     availability: "Available",
     contact: {
       phone: "+94 77 123 4567",
-      email: "chaminda@taprobane.lk"
+      email: "chaminda@thaprobase.lk"
     },
     highlights: [
       "UNESCO World Heritage expert",
@@ -41,7 +41,7 @@ export const guides = [
     availability: "Available",
     contact: {
       phone: "+94 77 234 5678",
-      email: "anjali@taprobane.lk"
+      email: "anjali@thaprobase.lk"
     },
     highlights: [
       "Certified wildlife guide",
@@ -66,7 +66,7 @@ export const guides = [
     availability: "Available",
     contact: {
       phone: "+94 77 345 6789",
-      email: "rohan@taprobane.lk"
+      email: "rohan@thaprobase.lk"
     },
     highlights: [
       "Mountain rescue certified",
@@ -91,7 +91,7 @@ export const guides = [
     availability: "Available",
     contact: {
       phone: "+94 77 456 7890",
-      email: "samantha@taprobane.lk"
+      email: "samantha@thaprobase.lk"
     },
     highlights: [
       "Marine biology degree",
@@ -116,7 +116,7 @@ export const guides = [
     availability: "Available",
     contact: {
       phone: "+94 77 567 8901",
-      email: "nimal@taprobane.lk"
+      email: "nimal@thaprobase.lk"
     },
     highlights: [
       "Culinary institute graduate",
@@ -141,7 +141,7 @@ export const guides = [
     availability: "Available",
     contact: {
       phone: "+94 77 678 9012",
-      email: "priya@taprobane.lk"
+      email: "priya@thaprobase.lk"
     },
     highlights: [
       "Tea sommelier certified",

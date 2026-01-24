@@ -1,4 +1,4 @@
-# 🌴 Taprobane - Premium Sri Lanka Tourism Web Application
+# 🌴 thaprobase - Sri Lanka Tourism Web Application
 
 A modern, sophisticated web application for exploring Sri Lanka with premium design, smooth animations, and comprehensive travel features.
 
@@ -35,7 +35,7 @@ A modern, sophisticated web application for exploring Sri Lanka with premium des
 
 2. **Install dependencies:**
 ```bash
-cd taprobane-premium
+cd thaprobase-premium
 npm install
 ```
 
@@ -50,7 +50,7 @@ Navigate to `http://localhost:3000`
 ## 📁 Project Structure
 
 ```
-taprobane-premium/
+thaprobase-premium/
 ├── public/                    # Static assets
 ├── src/
 │   ├── components/           # Reusable components

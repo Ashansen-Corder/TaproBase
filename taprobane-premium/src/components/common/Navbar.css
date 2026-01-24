@@ -40,6 +40,12 @@
   gap: var(--space-sm);
 }
 
+.logo-image {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+}
+
 .logo-icon {
   font-size: 2rem;
   line-height: 1;
