@@ -9,7 +9,7 @@ export const attractions = [
     rating: 4.9,
     reviews: 3421,
     entrance_fee: "USD 30",
-    image: "🏛️",
+    image: "/images/sigiriya.jpg",
     duration: "3-4 hours"
   },
   {
