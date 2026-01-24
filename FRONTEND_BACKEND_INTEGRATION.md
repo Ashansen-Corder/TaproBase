@@ -24,7 +24,7 @@ Tapro Pre/
     ├── middleware/
     ├── server.js
     └── package.json
-```
+```curl http://localhost:5000/api/health
 
 ## Setup Instructions
 

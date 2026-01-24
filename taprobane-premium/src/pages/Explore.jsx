@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Filter, X } from 'lucide-react';
+import { MapPin, Filter, X, Search } from 'lucide-react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import { attractions, categories } from '../data/attractions';
@@ -29,6 +29,11 @@ const Explore = () => {
   const [selectedAttraction, setSelectedAttraction] = useState(null);
   const [mapCenter, setMapCenter] = useState([7.8731, 80.7718]);
   const [mapZoom, setMapZoom] = useState(8);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+  const [isSearching, setIsSearching] = useState(false);
+  const [searchMarker, setSearchMarker] = useState(null);
+  const debounceRef = useRef(null);
 
   // Filter attractions by category
   const filteredAttractions = selectedCategory === 'all'
@@ -39,6 +44,100 @@ const Explore = () => {
   const handleLocationSelect = (location) => {
     setMapCenter([location.lat, location.lng]);
     setMapZoom(10);
+  };
+
+  // Perform search combining local data + Nominatim
+  const performSearch = async (query) => {
+    const q = query.trim();
+    if (q.length < 2) {
+      setSearchResults([]);
+      setIsSearching(false);
+      return;
+    }
+    setIsSearching(true);
+
+    // Local suggestions from attractions and main locations
+    const localFromAttractions = attractions
+      .filter(a => a.name.toLowerCase().includes(q.toLowerCase()) || a.description.toLowerCase().includes(q.toLowerCase()))
+      .map(a => ({
+        id: `attr-${a.id}`,
+        label: a.name,
+        subtitle: a.category,
+        lat: a.lat,
+        lon: a.lng,
+        source: 'local'
+      }));
+
+    const localFromLocations = mainLocations
+      .filter(l => l.name.toLowerCase().includes(q.toLowerCase()))
+      .map(l => ({
+        id: `loc-${l.name}`,
+        label: l.name,
+        subtitle: 'Location',
+        lat: l.lat,
+        lon: l.lng,
+        source: 'local'
+      }));
+
+    let remoteResults = [];
+    try {
+      const url = `https://nominatim.openstreetmap.org/search?format=jsonv2&countrycodes=lk&limit=8&q=${encodeURIComponent(q)}`;
+      const res = await fetch(url, { headers: { 'Accept': 'application/json' } });
+      if (res.ok) {
+        const data = await res.json();
+        remoteResults = data.map((item, idx) => ({
+          id: `osm-${item.osm_id || idx}`,
+          label: item.display_name?.split(',')[0] || item.name || q,
+          subtitle: item.type || 'Place',
+          lat: parseFloat(item.lat),
+          lon: parseFloat(item.lon),
+          source: 'osm'
+        }));
+      }
+    } catch (e) {
+      // If remote fails, fall back to local only
+      console.warn('Search remote error:', e);
+    }
+
+    // Merge and dedupe by label + coordinates
+    const merged = [...localFromAttractions, ...localFromLocations, ...remoteResults];
+    const seen = new Set();
+    const deduped = merged.filter(r => {
+      const key = `${r.label}-${r.lat}-${r.lon}`;
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+
+    setSearchResults(deduped);
+    setIsSearching(false);
+  };
+
+  const handleSearchChange = (e) => {
+    const value = e.target.value;
+    setSearchQuery(value);
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+    debounceRef.current = setTimeout(() => performSearch(value), 300);
+  };
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+    performSearch(searchQuery);
+  };
+
+  const handleSelectResult = (r) => {
+    setMapCenter([r.lat, r.lon]);
+    setMapZoom(12);
+    setSearchMarker({ lat: r.lat, lon: r.lon, label: r.label, subtitle: r.subtitle });
+    setSelectedAttraction(null);
+    setSearchResults([]);
+  };
+
+  const clearSearch = () => {
+    setSearchQuery('');
+    setSearchResults([]);
+    setSearchMarker(null);
   };
 
   // Custom marker icon with brand colors
@@ -76,6 +175,50 @@ const Explore = () => {
               Discover attractions, beaches, heritage sites, and adventure spots across the island
             </p>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Search */}
+      <section className="explore-search">
+        <div className="container">
+          <form className="search-box" onSubmit={handleSearchSubmit}>
+            <Search size={20} className="search-icon" />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={handleSearchChange}
+              placeholder="Search cities, beaches, heritage sites across Sri Lanka"
+              className="search-input"
+              aria-label="Search places"
+            />
+            {searchQuery && (
+              <button type="button" className="clear-btn" onClick={clearSearch} title="Clear">
+                <X size={16} />
+              </button>
+            )}
+            <button type="submit" className="btn btn-primary search-submit">Search</button>
+          </form>
+
+          {searchQuery && (
+            <div className="search-results">
+              {isSearching && (
+                <div className="search-status">Searching…</div>
+              )}
+              {!isSearching && searchResults.length === 0 && (
+                <div className="search-status">No results found</div>
+              )}
+              {!isSearching && searchResults.length > 0 && (
+                <ul>
+                  {searchResults.map(r => (
+                    <li key={r.id} className="search-item" onClick={() => handleSelectResult(r)}>
+                      <span className="item-label">{r.label}</span>
+                      <span className="item-sub">{r.subtitle}{r.source === 'osm' ? ' · OSM' : ''}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          )}
         </div>
       </section>
 
@@ -198,6 +341,27 @@ const Explore = () => {
                   </Popup>
                 </Marker>
               ))}
+              {searchMarker && (
+                <Marker
+                  position={[searchMarker.lat, searchMarker.lon]}
+                  icon={L.icon({
+                    iconUrl: `data:image/svg+xml;base64,${btoa(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#d4af37" width="44" height="44"><path d="M12 0C6.48 0 2 4.48 2 10c0 5.52 8 13 10 15.5 2-2.5 10-9.98 10-15.5C22 4.48 17.52 0 12 0zm0 14c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/></svg>`)}`,
+                    iconSize: [44, 44],
+                    iconAnchor: [22, 44],
+                    popupAnchor: [0, -44]
+                  })}
+                >
+                  <Popup className="custom-popup">
+                    <div className="popup-content">
+                      <h3>{searchMarker.label}</h3>
+                      <p>{searchMarker.subtitle}</p>
+                      <div className="popup-details">
+                        <span className="badge">Search result</span>
+                      </div>
+                    </div>
+                  </Popup>
+                </Marker>
+              )}
             </MapContainer>
           </motion.div>
 
