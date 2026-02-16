@@ -49,7 +49,7 @@ const Navbar = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <img src="/thaprobase-logo.svg" alt="thaprobase Logo" className="logo-image" />
+              <img src="/taprobane-logo.svg" alt="Taprobane Logo" className="logo-image" />
             </motion.div>
           </Link>
 
