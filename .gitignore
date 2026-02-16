@@ -19,3 +19,4 @@ coverage/
 *.tgz
 *.log
 Thumbs.db
+.vercel
