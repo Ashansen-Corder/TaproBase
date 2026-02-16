@@ -42,8 +42,12 @@ const Footer = () => {
             {/* Brand Column */}
             <div className="footer-brand">
               <Link to="/" className="footer-logo">
-                <span className="logo-icon">🌴</span>
-                <span className="logo-text">Thaprobase</span>
+                {/* --- UPDATED LOGO IMAGE --- */}
+                <img 
+                  src="/taprobane-logo.svg" 
+                  alt="Taprobase Logo" 
+                  style={{ height: '55px', objectFit: 'contain', marginBottom: '10px' }} 
+                />
               </Link>
               <p className="footer-tagline">
                 Your complete travel companion for exploring the pearl of the Indian Ocean
@@ -134,4 +138,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
