@@ -14,14 +14,14 @@ L.Icon.Default.mergeOptions({
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
 });
 
-// Main cities/locations in Sri Lanka
+// Main cities/locations in Sri Lanka (Emojis removed)
 const mainLocations = [
-  { name: 'Colombo', lat: 6.9271, lng: 80.7789, emoji: '🏙️' },
-  { name: 'Kandy', lat: 7.2906, lng: 80.6337, emoji: '🕉️' },
-  { name: 'Galle', lat: 6.0328, lng: 80.2168, emoji: '🏰' },
-  { name: 'Ella', lat: 6.8667, lng: 81.0467, emoji: '🏔️' },
-  { name: 'Mirissa', lat: 5.9495, lng: 80.4761, emoji: '🌊' },
-  { name: 'Sigiriya', lat: 7.9570, lng: 80.7603, emoji: '🗻' }
+  { name: 'Colombo', lat: 6.9271, lng: 80.7789 },
+  { name: 'Kandy', lat: 7.2906, lng: 80.6337 },
+  { name: 'Galle', lat: 6.0328, lng: 80.2168 },
+  { name: 'Ella', lat: 6.8667, lng: 81.0467 },
+  { name: 'Mirissa', lat: 5.9495, lng: 80.4761 },
+  { name: 'Sigiriya', lat: 7.9570, lng: 80.7603 }
 ];
 
 const Explore = () => {
@@ -41,11 +41,19 @@ const Explore = () => {
     setMapZoom(10);
   };
 
-  // Custom marker icon with brand colors
+  // Custom marker icon with brand colors (Handles Images and Emojis)
   const createCustomIcon = (category) => {
+    const categoryData = filteredAttractions.find(a => a.category === category);
+    const imageSrc = categoryData?.image;
+    
+    // Check if it's a file path or an emoji
+    const iconContent = imageSrc?.includes('/') 
+      ? `<img src="${imageSrc}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" />`
+      : (imageSrc || '📍');
+
     return L.divIcon({
       className: 'custom-marker',
-      html: `<div class="marker-icon marker-${category}" style="background-color: #003d82; color: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 20px; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">${filteredAttractions.find(a => a.category === category)?.image || '📍'}</div>`,
+      html: `<div class="marker-icon marker-${category}" style="background-color: #003d82; color: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 20px; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3); overflow: hidden;">${iconContent}</div>`,
       iconSize: [40, 40],
       iconAnchor: [20, 40],
       popupAnchor: [0, -40]
@@ -138,7 +146,6 @@ const Explore = () => {
                   whileTap={{ scale: 0.95 }}
                   title={`Jump to ${location.name}`}
                 >
-                  <span className="location-emoji">{location.emoji}</span>
                   <span className="location-name">{location.name}</span>
                 </motion.button>
               ))}
@@ -231,7 +238,31 @@ const Explore = () => {
                   onClick={() => setSelectedAttraction(attraction)}
                   whileHover={{ x: 4 }}
                 >
-                  <div className="item-icon">{attraction.image}</div>
+                  {/* --- FIXED IMAGE SECTION --- */}
+                  <div className="item-icon" style={{ 
+                    width: '90px',      // Force strict width
+                    height: '90px',     // Force strict height
+                    flexShrink: 0,      // Prevent the flexbox from squishing it
+                    padding: 0, 
+                    overflow: 'hidden', 
+                    borderRadius: '12px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    backgroundColor: '#f0f4f8'
+                  }}>
+                    {attraction.image?.includes('/') ? (
+                      <img 
+                        src={attraction.image} 
+                        alt={attraction.name} 
+                        style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                      />
+                    ) : (
+                      <span style={{ fontSize: '2.5rem' }}>{attraction.image || '📍'}</span>
+                    )}
+                  </div>
+                  {/* ----------------------------- */}
+
                   <div className="item-content">
                     <h4>{attraction.name}</h4>
                     <p className="item-desc">{attraction.description}</p>
@@ -271,17 +302,17 @@ const Explore = () => {
             transition={{ delay: 0.5 }}
           >
             <div className="info-card">
-              <div className="info-icon">🗺️</div>
+              <div className="info-icon"></div>
               <h3>Interactive Map</h3>
               <p>Click on markers to see attraction details and ratings</p>
             </div>
             <div className="info-card">
-              <div className="info-icon">🔍</div>
+              <div className="info-icon"></div>
               <h3>Smart Filtering</h3>
               <p>Filter attractions by category to find what interests you</p>
             </div>
             <div className="info-card">
-              <div className="info-icon">📍</div>
+              <div className="info-icon"></div>
               <h3>Location Data</h3>
               <p>Get exact coordinates and practical information for each spot</p>
             </div>
