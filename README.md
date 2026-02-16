@@ -351,6 +351,8 @@ For questions or issues:
 
 *Note: This is a student project for learning purposes. Some features are simulated and will be connected to real services in future iterations.*
 
+---
+
 **Student Names and IDs**  
 
 ITBIN-2313-0112 — Dimuth Minsilu  
