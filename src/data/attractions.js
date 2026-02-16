@@ -1,75 +1,74 @@
+export const categories = [
+  { id: 'all', label: 'All Attractions', icon: '📍' },
+  { id: 'heritage', label: 'Heritage', icon: '🏛️' },
+  { id: 'beach', label: 'Beaches', icon: '🏖️' },
+  { id: 'nature', label: 'Nature & Wildlife', icon: '🌿' }
+];
+
 export const attractions = [
   {
     id: 1,
-    name: "Sigiriya Rock Fortress",
-    description: "Ancient rock fortress and UNESCO World Heritage site with breathtaking frescoes",
-    category: "heritage",
-    lat: 7.9570,
-    lng: 80.7603,
+    name: 'Sigiriya Rock Fortress',
+    category: 'heritage',
+    image: '/images/sigiriya.jpg',
+    description: 'Ancient rock fortress and UNESCO World Heritage site featuring historic frescoes.',
+    duration: '3-4 hours',
+    entrance_fee: 'USD 30',
     rating: 4.9,
-    reviews: 3421,
-    entrance_fee: "USD 30",
-    image: "/images/sigiriya.jpg",
-    duration: "3-4 hours"
+    reviews: 2450,
+    lat: 7.9570,
+    lng: 80.7603
   },
   {
     id: 2,
-    name: "Temple of the Tooth",
-    description: "Sacred Buddhist temple in Kandy housing a relic of Buddha's tooth",
-    category: "heritage",
-    lat: 7.2936,
-    lng: 80.6410,
+    name: 'Temple of the Tooth',
+    category: 'heritage',
+    image: '/images/temple.jpg',
+    description: "Sacred Buddhist temple in Kandy housing a relic of Buddha's tooth.",
+    duration: '1-2 hours',
+    entrance_fee: 'LKR 2000',
     rating: 4.8,
-    reviews: 2876,
-    entrance_fee: "LKR 2000",
-    image: "🕉️",
-    duration: "1-2 hours"
+    reviews: 3120,
+    lat: 7.2936,
+    lng: 80.6413
   },
   {
     id: 3,
-    name: "Unawatuna Beach",
-    description: "Pristine crescent-shaped beach perfect for swimming and water sports",
-    category: "beach",
-    lat: 6.0104,
-    lng: 80.2491,
+    name: 'Unawatuna Beach',
+    category: 'beach',
+    image: '/images/unawatuna.jpg',
+    description: 'Pristine crescent-shaped beach perfect for swimming and water sports.',
+    duration: 'Full day',
+    entrance_fee: 'Free',
     rating: 4.7,
-    reviews: 1956,
-    entrance_fee: "Free",
-    image: "🏖️",
-    duration: "Full day"
+    reviews: 1890,
+    lat: 6.0113,
+    lng: 80.2483
   },
   {
     id: 4,
-    name: "Yala National Park",
-    description: "Premier wildlife sanctuary famous for leopards and elephants",
-    category: "nature",
-    lat: 6.3726,
-    lng: 81.5198,
+    name: 'Yala National Park',
+    category: 'nature',
+    image: '/images/yala.jpg',
+    description: 'Premier wildlife sanctuary famous for leopards and elephants.',
+    duration: 'Half day',
+    entrance_fee: 'USD 25',
     rating: 4.8,
-    reviews: 2134,
-    entrance_fee: "USD 25",
-    image: "🐘",
-    duration: "Half day"
+    reviews: 4200,
+    lat: 6.3670,
+    lng: 81.5173
   },
   {
     id: 5,
-    name: "Ella Rock",
-    description: "Spectacular hiking trail with panoramic views of tea plantations",
-    category: "adventure",
-    lat: 6.8667,
-    lng: 81.0467,
-    rating: 4.9,
-    reviews: 1823,
-    entrance_fee: "Free",
-    image: "🏔️",
-    duration: "4-5 hours"
+    name: 'Ella Rock',
+    category: 'nature',
+    image: '/images/ella-rock.jpg',
+    description: 'A famous cliff offering panoramic views of the misty highlands and tea estates.',
+    duration: '3-4 hours',
+    entrance_fee: 'Free',
+    rating: 4.8,
+    reviews: 850,
+    lat: 6.8567,
+    lng: 81.0450
   }
-];
-
-export const categories = [
-  { id: 'all', label: 'All', icon: '🌍' },
-  { id: 'heritage', label: 'Heritage', icon: '🏛️' },
-  { id: 'beach', label: 'Beaches', icon: '🏖️' },
-  { id: 'nature', label: 'Nature', icon: '🌿' },
-  { id: 'adventure', label: 'Adventure', icon: '🏔️' }
 ];

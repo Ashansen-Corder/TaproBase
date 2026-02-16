@@ -257,11 +257,30 @@ const Home = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <div className="visual-card">
-                <div className="visual-icon">✨</div>
-                <h3>Premium Experience</h3>
-                <p>Curated itineraries and personalized recommendations</p>
+              {/* --- NEW IMAGE SECTION --- */}
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', maxWidth: '550px' }}>
+                <img 
+                  src="/images/train-journey.jpg" 
+                  alt="Sri Lanka scenic train journey through tea plantations" 
+                  style={{ 
+                    width: '100%', 
+                    height: 'auto', 
+                    borderRadius: '16px', 
+                    boxShadow: '0 10px 30px rgba(0,0,0,0.1)', 
+                    objectFit: 'cover' 
+                  }}
+                />
+                <p style={{ 
+                  marginTop: '15px', 
+                  fontSize: '1rem', 
+                  color: '#4b5563', 
+                  textAlign: 'center', 
+                  fontWeight: '500' 
+                }}>
+                  Experience the heart of Sri Lanka with curated journeys.
+                </p>
               </div>
+              {/* ------------------------- */}
             </motion.div>
           </div>
         </div>
@@ -332,7 +351,6 @@ const DestinationCard = ({ destination, index }) => {
       transition={{ delay: index * 0.1, duration: 0.5 }}
       whileHover={{ y: -8 }}
     >
-      {/* --- THIS IS THE KEY FIX BELOW --- */}
       <div className="destination-image-container">
          <img 
             src={destination.image} 
@@ -346,7 +364,6 @@ const DestinationCard = ({ destination, index }) => {
             }} 
          />
       </div>
-      {/* ---------------------------------- */}
 
       <div className="destination-info">
         <div className="destination-header">
