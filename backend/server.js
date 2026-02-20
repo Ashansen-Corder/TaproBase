@@ -24,7 +24,8 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+  // Updated fallback to 8080 to match our Docker frontend container
+  origin: process.env.FRONTEND_URL || 'http://localhost:8080',
   credentials: true
 }));
 app.use(express.json());
@@ -38,6 +39,11 @@ app.use('/api/guides', guideRoutes);
 app.use('/api/bookings', bookingRoutes);
 app.use('/api/trips', tripRoutes);
 app.use('/api/contact', contactRoutes);
+
+// Root route added specifically for the Docker Healthcheck
+app.get('/', (req, res) => {
+  res.status(200).send('TaproBase API is running');
+});
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
@@ -89,6 +95,7 @@ app.use((req, res) => {
 // Connect to MongoDB
 const connectDB = async () => {
   try {
+    // This perfectly catches the MONGODB_URI from docker-compose!
     const conn = await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/taprobane');
     console.log(`MongoDB Connected: ${conn.connection.host}`);
   } catch (error) {

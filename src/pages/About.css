@@ -1,0 +1,91 @@
+.about-page {
+  min-height: 100vh;
+  padding-top: 80px; 
+}
+
+.about-hero {
+  text-align: center;
+  padding: 6rem 2rem;
+  background-color: #ffffff;
+}
+
+.about-hero h1 {
+  font-size: 3.5rem;
+  color: #003d82; 
+  margin-bottom: 1rem;
+  font-weight: 800;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: #64748b;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.about-content {
+  background-color: #1a1a1a; 
+  color: #ffffff;
+  padding: 5rem 2rem;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+}
+
+.about-text-box h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+}
+
+.about-text-box p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #a1a1aa;
+  margin-bottom: 1.5rem;
+}
+
+.about-features {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.feature-icon {
+  background-color: #003d82;
+  color: white;
+  padding: 1rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feature-item h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+
+.feature-item p {
+  color: #a1a1aa;
+  line-height: 1.5;
+}

@@ -1,0 +1,20 @@
+# Dependency directories
+node_modules/
+
+# Build outputs
+dist/
+build/
+
+# Git and environment files
+.git/
+.gitignore
+.env
+.env.*
+
+# Docker-related files (prevents recursive copying)
+Dockerfile
+.dockerignore
+docker-compose.yml
+
+# IDE files
+.vscode/
